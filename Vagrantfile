@@ -79,5 +79,11 @@ Vagrant.configure("2") do |config|
 	sudo yum install -y java-1.8.0-openjdk.x86_64
 	sudo systemctl start jenkins.service
 	sudo systemctl enable jenkins.service
+	curl -fsSL https://get.docker.com/ | sh
+	sudo usermod -a -G docker jenkins
+	sudo usermod -a -G root jenkins
+	sudo usermod -a -G docker vagrant
+	sudo systemctl enable docker
+	sudo systemctl start docker
   SHELL
 end
